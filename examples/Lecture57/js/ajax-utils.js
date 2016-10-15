@@ -28,6 +28,7 @@ ajaxUtils.sendGetRequest =
       function() { 
         handleResponse(request, responseHandler); 
       };
+
     request.open("GET", requestUrl, true);
     request.send(null); // for POST only
   };
@@ -38,8 +39,9 @@ ajaxUtils.sendGetRequest =
 // and not an error
 function handleResponse(request,
                         responseHandler) {
-  if ((request.readyState == 4) &&
-     (request.status == 200)) {
+
+console.log(request.status);
+  if ((request.readyState == 4) ) {//can't check status because og cross origin call forbiiden in google chrome.
     responseHandler(request);
   }
 }
